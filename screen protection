@@ -1,0 +1,49 @@
+//李育婵 2020.3
+float x = 100;
+float y = 100;
+float xspeed = 2.5;
+float yspeed = 2;
+
+void setup() {
+   size(1280, 800);
+  smooth();
+   frameRate(32);
+
+
+}
+
+void draw() {
+  background(68,125,10);
+
+
+  // Add the current speed to the position.
+  x = x + xspeed;
+  y = y + yspeed;
+
+  if ((x > width) || (x <0)) {
+    xspeed = xspeed * -1;
+  }
+  if ((y > height) || (y < 0)) {
+    yspeed = yspeed * -1;
+ 
+
+  }
+stroke(0);
+ strokeWeight(2);
+target(x,y,7,18);
+
+}
+
+void target(float xPos, float yPos, int numRings, int ringsize)
+
+{
+  noStroke();
+  for (int i=numRings; i>0 ; i--)
+  {
+    int size=i*ringsize;
+    int gray=i*(255/numRings);
+    fill(gray+50,gray+100,gray+5);
+    ellipse(xPos, yPos, size,size);
+  }
+}
+  
